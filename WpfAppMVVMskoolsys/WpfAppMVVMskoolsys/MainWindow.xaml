@@ -4,10 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppMVVMskoolsys"
+        xmlns:vm="clr-namespace:WpfAppMVVMskoolsys.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <DockPanel>
-        <ContentControl Style="{StaticResource MenuPanel}" DockPanel.Dock="Top"/>
-        <Frame x:Name="FramePage"/>
+
+    <Window.DataContext>
+        <vm:MainWindowVM/>
+    </Window.DataContext>
+
+        <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="System">
+                <MenuItem Header="Classes" Command="{Binding ClassesPage}"
+                                           CommandParameter="{Binding ElementName=FramePage}"/>
+                <MenuItem Header="Students"/>
+                <MenuItem Header="Teachers"/>
+                <MenuItem Header="Main Menu"/>
+                <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
+            </MenuItem>
+        </Menu>
+
+
+        <Frame x:Name="FramePage" Background="Wheat" NavigationUIVisibility="Hidden"/>
+        
     </DockPanel>
 </Window>

@@ -20,3 +20,6 @@ C:\Users\matyas.schuller\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfApp
 C:\Users\matyas.schuller\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\WpfAppMVVMskoolsys.genruntimeconfig.cache
 C:\Users\matyas.schuller\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\ref\WpfAppMVVMskoolsys.dll
 C:\Users\matyas.schuller\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\App.baml
+C:\Users\matyas.schuller\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\matyas.schuller\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\Views\Classes\PageClasses.g.cs
+C:\Users\matyas.schuller\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\Views\Classes\PageClasses.baml
