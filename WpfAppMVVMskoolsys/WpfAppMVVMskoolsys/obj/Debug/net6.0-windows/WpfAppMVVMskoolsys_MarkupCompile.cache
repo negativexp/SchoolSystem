@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\matyas.schuller\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\
+C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\
 WpfAppMVVMskoolsys
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\matyas.schuller\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\App.xaml
-2-829115297
+C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\App.xaml
+4-468907773
 
-7902384220
-1941905061893
-MainWindow.xaml;Views\Classes\PageClasses.xaml;
+14312662752
+200-1658170020
+MainWindow.xaml;Views\Classes\PageClasses.xaml;Views\Classes\WindowCreateClass.xaml;Views\WindowDatabase.xaml;
 
 False
 

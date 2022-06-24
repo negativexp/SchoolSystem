@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfAppMVVMskoolsys.Views.WindowDatabase"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppMVVMskoolsys.Views"
+        mc:Ignorable="d"
+        Title="WindowDatabase" Height="450" Width="800">
+    <DockPanel>
+        <Border Style="{StaticResource BorderTitle}" DockPanel.Dock="Top">
+            <DockPanel>
+                <TextBlock Style="{StaticResource TextBlockTitle}" Text="Database settings - MongoDB" DockPanel.Dock="Left"/>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"
+                            HorizontalAlignment="Right">
+                    <Button Style="{StaticResource ButtonTemplate}" Content="Close"/>
+                    <Button Style="{StaticResource ButtonTemplate}" Content="Save"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <Border Style="{StaticResource BorderContent}">
+            <StackPanel>
+                
+            </StackPanel>
+        </Border>
+    </DockPanel>
+</Window>

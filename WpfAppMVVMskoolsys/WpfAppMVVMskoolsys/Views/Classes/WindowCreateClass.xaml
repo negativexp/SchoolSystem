@@ -4,20 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppMVVMskoolsys.Views.Classes"
+        xmlns:vm="clr-namespace:WpfAppMVVMskoolsys.ViewModels.Classes"
         mc:Ignorable="d"
         Title="WindowCreateClass" Height="450" Width="800">
-    
+
+    <Window.DataContext>
+        <vm:PageClassesVM/>
+    </Window.DataContext>
+
     <DockPanel>
         <Border Style="{StaticResource BorderTitle}" DockPanel.Dock="Top">
-            <TextBlock Style="{StaticResource TextBlockTitle}" Text="Create New Class" DockPanel.Dock="Left"/>
+            <DockPanel>
+                <TextBlock Style="{StaticResource TextBlockTitle}" Text="Create New Class" DockPanel.Dock="Left"/>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"
+                            HorizontalAlignment="Right">
+                    <Button Style="{StaticResource ButtonTemplate}" Content="Close"/>
+                    <Button Style="{StaticResource ButtonTemplate}" Content="Create" Command="{Binding CreateClassCommand}"/>
+                </StackPanel>
+            </DockPanel>
         </Border>
 
         <Border Style="{StaticResource BorderContent}">
-            <DockPanel>
-                <TextBox Width="200" Height="20" DockPanel.Dock="Top"/>
-                <TextBox Width="200" Height="20"/>
-                <TextBox Width="200" Height="20"/>
-            </DockPanel>
+            <StackPanel>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Name of Class:"/>
+                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _classRecord.ClassName, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Grade:"/>
+                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _classRecord.Grade, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Root Teacher:"/>
+                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _classRecord.RootTeacher, Mode=TwoWay}"/>
+            </StackPanel>
         </Border>
     </DockPanel>
 </Window>

@@ -14,15 +14,23 @@
             <Setter Property="Height" Value="100"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
         </Style>
-
+        
+        <!--textblocks-->
         <Style x:Key="TextBlockTitle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="36"/>
             <Setter Property="FontFamily" Value="Corbel"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="20"/>
         </Style>
-        
-        <!--content-->
+
+        <Style x:Key="TextBlockHeader1" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontFamily" Value="Corbel"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+            <!--content-->
         <Style x:Key="BorderContent" TargetType="Border">
             <Setter Property="BorderBrush" Value="#7160E8"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -56,6 +64,13 @@
                     <Setter Property="Cursor" Value="Hand"/>
                 </Trigger>
             </Style.Triggers>
+        </Style>
+        
+        <!--textbox-->
+        <Style x:Key="TextBoxTemplate" TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="10 0 10 0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="22"/>
         </Style>
     </Application.Resources>
 </Application>

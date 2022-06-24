@@ -1,8 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "TxKpSVzkV+f8SXqAeTgsITOzn4KPaJCqV5DeRRI48QYmKf+N/oACb3ns/Tm2MjBQxDrNuEfssoR8niZx7AImnw==",
+  "dgSpecHash": "twd2xo/7jwTVGLETLIGfm4mghobIngLI75BqHZkoMFmKQHmtau5Rtcx+B0w7Pn0K8apwtQ2rSKXTBTj/swNqmA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\matyas.schuller\\Documents\\GitHub\\SchoolSystem\\WpfAppMVVMskoolsys\\WpfAppMVVMskoolsys\\WpfAppMVVMskoolsys.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\matta\\Documents\\GitHub\\SchoolSystem\\WpfAppMVVMskoolsys\\WpfAppMVVMskoolsys\\WpfAppMVVMskoolsys.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\matta\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\matta\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\matta\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\Users\\matta\\.nuget\\packages\\mongodb.bson\\2.16.1\\mongodb.bson.2.16.1.nupkg.sha512",
+    "C:\\Users\\matta\\.nuget\\packages\\mongodb.driver\\2.16.1\\mongodb.driver.2.16.1.nupkg.sha512",
+    "C:\\Users\\matta\\.nuget\\packages\\mongodb.driver.core\\2.16.1\\mongodb.driver.core.2.16.1.nupkg.sha512",
+    "C:\\Users\\matta\\.nuget\\packages\\mongodb.libmongocrypt\\1.5.3\\mongodb.libmongocrypt.1.5.3.nupkg.sha512",
+    "C:\\Users\\matta\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
+    "C:\\Users\\matta\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\matta\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\Users\\matta\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\matta\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

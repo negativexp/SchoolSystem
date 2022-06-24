@@ -19,13 +19,14 @@
                                            CommandParameter="{Binding ElementName=FramePage}"/>
                 <MenuItem Header="Students"/>
                 <MenuItem Header="Teachers"/>
+                <MenuItem Header="Database"/>
                 <MenuItem Header="Main Menu"/>
                 <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
             </MenuItem>
         </Menu>
 
 
-        <Frame x:Name="FramePage" Background="Wheat" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="FramePage" NavigationUIVisibility="Hidden"/>
         
     </DockPanel>
 </Window>
