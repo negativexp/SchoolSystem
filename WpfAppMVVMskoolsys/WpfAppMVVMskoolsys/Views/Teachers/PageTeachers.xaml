@@ -21,7 +21,7 @@
                 <TextBlock Style="{StaticResource TextBlockTitle}" Text="Teachers" DockPanel.Dock="Left"/>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"
                             HorizontalAlignment="Right">
-                    <Button Style="{StaticResource ButtonTemplate}" Content="Refresh"/>
+                    <Button Style="{StaticResource ButtonTemplate}" Content="Refresh" Command="{Binding RefreshCommand}"/>
                     <Button Style="{StaticResource ButtonTemplate}" Content="Add" Command="{Binding ShowCreateWindowCommand}"/>
                 </StackPanel>
             </DockPanel>

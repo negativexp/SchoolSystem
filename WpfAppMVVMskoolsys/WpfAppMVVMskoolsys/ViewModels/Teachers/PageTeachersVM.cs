@@ -13,6 +13,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
 
         ICommand _showCreateWindowCommand;
         ICommand _createTeacherCommand;
+        ICommand _refreshCommand;
 
         public PageTeachersVM()
         {
@@ -22,6 +23,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
 
             _showCreateWindowCommand = new RelayCommand(param => ShowCreateWindow(), null);
             _createTeacherCommand = new RelayCommand(param => CreateTeacher(), null);
+            _refreshCommand = new RelayCommand(param => GetAll(), null);
             GetAll();
         }
 
@@ -29,6 +31,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
         {
             Views.Teachers.WindowCreateTeacher windowCreateTeacher = new Views.Teachers.WindowCreateTeacher();
             windowCreateTeacher.ShowDialog();
+            GetAll();
         }
 
         public void CreateTeacher()
@@ -57,7 +60,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
             _teacherEntity.LastName = String.Empty;
             _teacherEntity.Birthday = null;
             _teacherEntity.Degree = String.Empty;
-            _teacherEntity.Salary = null;
+            _teacherEntity.Salary = 0;
         }
 
         public void GetAll()
@@ -82,6 +85,11 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
         public ICommand CreateTeacherCommand
         {
             get => _createTeacherCommand;
+        }
+
+        public ICommand RefreshCommand
+        {
+            get => _refreshCommand;
         }
     }
 }

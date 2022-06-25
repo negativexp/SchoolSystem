@@ -31,7 +31,8 @@
                 <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Grade:"/>
                 <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _classRecord.Grade, Mode=TwoWay}"/>
                 <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Root Teacher:"/>
-                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _classRecord.RootTeacher, Mode=TwoWay}"/>
+                <!--<TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _classRecord.RootTeacher, Mode=TwoWay}"/>-->
+                <ComboBox Style="{StaticResource ComboBoxTemplate}" ItemsSource="{Binding Teachers}" Text="{Binding _classRecord.RootTeacher, Mode=TwoWay}"/>
             </StackPanel>
         </Border>
     </DockPanel>

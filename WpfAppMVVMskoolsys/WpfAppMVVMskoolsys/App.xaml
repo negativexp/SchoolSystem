@@ -72,5 +72,12 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Height" Value="22"/>
         </Style>
+        
+        <!--combobox-->
+        <Style x:Key="ComboBoxTemplate" TargetType="ComboBox">
+            <Setter Property="Margin" Value="10 0 10 0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="22"/>
+        </Style>
     </Application.Resources>
 </Application>

@@ -8,21 +8,27 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
     class PageClassesVM
     {
         public Models.ClassRecord _classRecord { get; set; }
+        public Models.Teachers.TeacherRecord _teacherRecord { get; set; }
         private Models.ClassEntity _classEntity;
         private DataAccess.SchoolRepository _schoolRepository;
 
         ICommand _showCreateWindowCommand;
         ICommand _createClassCommand;
+        ICommand _refreshCommand;
 
         public PageClassesVM()
         {
             _schoolRepository = new DataAccess.SchoolRepository();
             _classRecord = new Models.ClassRecord();
             _classEntity = new Models.ClassEntity();
+            _teacherRecord = new Models.Teachers.TeacherRecord();
+            Teachers = new List<string>();
 
             _showCreateWindowCommand = new RelayCommand(param => ShowCreateWindow(), null);
             _createClassCommand = new RelayCommand(param => CreateClass(), null);
+            _refreshCommand = new RelayCommand(param => GetAll(), null);
 
+            GetAllTeachers();
             GetAll();
         }
 
@@ -71,13 +77,35 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
             }));
         }
 
+        public void GetAllTeachers()
+        {
+            _teacherRecord.TeacherRecords = new List<Models.Teachers.TeacherEntity>();
+            _schoolRepository.GetAllTeachers().ForEach(data => Teachers.Add(data.FullName));
+        }
+
+        private List<string> _teachers;
+        public List<string> Teachers
+        {
+            get => _teachers;
+            set
+            {
+                _teachers = value;
+            }
+        }
+
         public ICommand ShowCreateWindowCommand
         {
             get => _showCreateWindowCommand;
         }
+
         public ICommand CreateClassCommand
         {
             get => _createClassCommand;
+        }
+
+        public ICommand RefreshCommand
+        {
+            get => _refreshCommand;
         }
     }
 }
