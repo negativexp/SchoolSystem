@@ -11,11 +11,14 @@ namespace WpfAppMVVMskoolsys.ViewModels
     class MainWindowVM
     {
         ICommand _classesPage;
+        ICommand _teachersPage;
         ICommand _exitCommand;
 
         public MainWindowVM()
         {
             _classesPage = new RelayCommand(param => ChangeToClassesPage(param), null);
+            _teachersPage = new RelayCommand(param => ChangeToTeachersPage(param), null);
+
             _exitCommand = new RelayCommand(param => CloseApplication(), null);
         }
 
@@ -27,6 +30,14 @@ namespace WpfAppMVVMskoolsys.ViewModels
             }
         }
 
+        public void ChangeToTeachersPage(object obj)
+        {
+            if (obj is System.Windows.Controls.Frame frame)
+            {
+                frame.Content = new Views.Teachers.PageTeachers();
+            }
+        }
+
         public void CloseApplication()
         {
             Application.Current.Shutdown();
@@ -35,6 +46,11 @@ namespace WpfAppMVVMskoolsys.ViewModels
         public ICommand ClassesPage
         {
             get => _classesPage;
+        }
+
+        public ICommand TeachersPage
+        {
+            get => _teachersPage;
         }
 
         public ICommand ExitCommand

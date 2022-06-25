@@ -18,7 +18,8 @@
                 <MenuItem Header="Classes" Command="{Binding ClassesPage}"
                                            CommandParameter="{Binding ElementName=FramePage}"/>
                 <MenuItem Header="Students"/>
-                <MenuItem Header="Teachers"/>
+                <MenuItem Header="Teachers" Command="{Binding TeachersPage}"
+                                            CommandParameter="{Binding ElementName=FramePage}"/>
                 <MenuItem Header="Database"/>
                 <MenuItem Header="Main Menu"/>
                 <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>

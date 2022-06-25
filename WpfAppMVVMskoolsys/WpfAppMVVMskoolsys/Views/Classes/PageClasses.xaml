@@ -14,7 +14,7 @@
         <vm:PageClassesVM/>
     </Page.DataContext>
 
-        <DockPanel>
+    <DockPanel>
         <!--title-->
         <Border Style="{StaticResource BorderTitle}" DockPanel.Dock="Top">
             <DockPanel>

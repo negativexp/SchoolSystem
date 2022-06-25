@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfAppMVVMskoolsys.Views.Classes"
         xmlns:vm="clr-namespace:WpfAppMVVMskoolsys.ViewModels.Classes"
         mc:Ignorable="d"
-        Title="WindowCreateClass" Height="450" Width="800">
+        Title="WindowCreateClass" Height="700" Width="650">
 
     <Window.DataContext>
         <vm:PageClassesVM/>

@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
-using System.Collections.ObjectModel;
 
 namespace WpfAppMVVMskoolsys.ViewModels.Classes
 {
@@ -49,6 +45,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
             catch (Exception ex) { MessageBox.Show($"Something went wrong.\n{ex.ToString()}", "error"); }
             finally
             {
+                MessageBox.Show($"Class '{_classEntity.ClassName}' has been created!", "Success");
                 GetAll();
                 ResetData();
             }
@@ -65,7 +62,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
         public void GetAll()
         {
             _classRecord.ClassRecords = new List<Models.ClassEntity>();
-            _schoolRepository.GetAll().ForEach(data => _classRecord.ClassRecords.Add(new Models.ClassEntity()
+            _schoolRepository.GetAllClasses().ForEach(data => _classRecord.ClassRecords.Add(new Models.ClassEntity()
             {
                 Id = data.Id,
                 ClassName = data.ClassName,

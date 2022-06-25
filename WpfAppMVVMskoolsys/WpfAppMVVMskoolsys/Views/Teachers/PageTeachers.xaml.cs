@@ -24,5 +24,10 @@ namespace WpfAppMVVMskoolsys.Views.Teachers
         {
             InitializeComponent();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            NavigationService.RemoveBackEntry();
+        }
     }
 }

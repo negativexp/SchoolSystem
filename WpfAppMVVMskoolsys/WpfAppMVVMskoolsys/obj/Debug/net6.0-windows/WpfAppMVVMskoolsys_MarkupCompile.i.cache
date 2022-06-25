@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\App.xaml
-5-1273955481
+61012422537
 
-17-411532251
+21-1940160062
 200-1658170020
-MainWindow.xaml;Views\Classes\PageClasses.xaml;Views\Classes\WindowCreateClass.xaml;Views\Teachers\PageTeachers.xaml;Views\WindowDatabase.xaml;
+MainWindow.xaml;Views\Classes\PageClasses.xaml;Views\Classes\WindowCreateClass.xaml;Views\Teachers\PageTeachers.xaml;Views\Teachers\WindowCreateTeacher.xaml;Views\WindowDatabase.xaml;
 
-False
+True
 
