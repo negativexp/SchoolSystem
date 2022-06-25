@@ -7,13 +7,23 @@ namespace WpfAppMVVMskoolsys.Models
 {
     class ClassRecord : ViewModels.ViewModelBase
     {
-        private ObservableCollection<ClassRecord> _classRecords;
-        public ObservableCollection<ClassRecord> ClassRecords
+        private List<ClassEntity> _classRecords;
+        public List<ClassEntity> ClassRecords
         {
             get => _classRecords;
             set
             {
                 _classRecords = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _id;
+        public string Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
                 OnPropertyChanged();
             }
         }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace WpfAppMVVMskoolsys.ViewModels.Classes
 {
@@ -25,29 +26,52 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
 
             _showCreateWindowCommand = new RelayCommand(param => ShowCreateWindow(), null);
             _createClassCommand = new RelayCommand(param => CreateClass(), null);
+
+            GetAll();
         }
 
         public void ShowCreateWindow()
         {
             Views.Classes.WindowCreateClass windowCreateClass = new Views.Classes.WindowCreateClass();
-            windowCreateClass.Show();
+            windowCreateClass.ShowDialog();
+            GetAll();
         }
 
         public void CreateClass()
         {
-            MessageBox.Show("is this working?");
             _classEntity.ClassName = _classRecord.ClassName;
             _classEntity.Grade = _classRecord.Grade;
             _classEntity.RootTeacher = _classRecord.RootTeacher;
-            _schoolRepository.CreateClass(_classEntity);
-            ResetData();
+            try
+            {
+                _schoolRepository.CreateClass(_classEntity);
+            }
+            catch (Exception ex) { MessageBox.Show($"Something went wrong.\n{ex.ToString()}", "error"); }
+            finally
+            {
+                GetAll();
+                ResetData();
+            }
         }
 
         public void ResetData()
         {
+            _classEntity.Id = String.Empty;
             _classEntity.ClassName = String.Empty;
             _classEntity.Grade = String.Empty;
             _classEntity.RootTeacher = String.Empty;
+        }
+
+        public void GetAll()
+        {
+            _classRecord.ClassRecords = new List<Models.ClassEntity>();
+            _schoolRepository.GetAll().ForEach(data => _classRecord.ClassRecords.Add(new Models.ClassEntity()
+            {
+                Id = data.Id,
+                ClassName = data.ClassName,
+                Grade = data.Grade,
+                RootTeacher = data.RootTeacher
+            }));
         }
 
         public ICommand ShowCreateWindowCommand

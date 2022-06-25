@@ -28,7 +28,10 @@
         </Border>
         <!--content-->
         <Border Style="{StaticResource BorderContent}">
-            <DataGrid Margin="5">
+            <DataGrid BorderBrush="Transparent" BorderThickness="0"
+                      ItemsSource="{Binding _classRecord.ClassRecords}"
+                      CanUserAddRows="False"
+                      IsReadOnly="True">
                 
             </DataGrid>
         </Border>
