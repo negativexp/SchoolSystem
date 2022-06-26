@@ -31,8 +31,14 @@
             <DataGrid BorderBrush="Transparent" BorderThickness="0"
                       ItemsSource="{Binding _classRecord.ClassRecords}"
                       CanUserAddRows="False"
-                      IsReadOnly="True">
-                
+                      IsReadOnly="True"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
+                    <DataGridTextColumn Header="Class Name" Binding="{Binding ClassName}" Width="*"/>
+                    <DataGridTextColumn Header="Grade" Binding="{Binding Grade}" Width="*"/>
+                    <DataGridTextColumn Header="Root Teacher" Binding="{Binding RootTeacher}" Width="*"/>
+                </DataGrid.Columns>
             </DataGrid>
         </Border>
     </DockPanel>

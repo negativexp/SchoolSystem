@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel.DataAnnotations;
 
 namespace WpfAppMVVMskoolsys.Models.Teachers
 {
@@ -37,8 +38,8 @@ namespace WpfAppMVVMskoolsys.Models.Teachers
                 OnPropertyChanged();
             }
         }
-        private DateTime _birthday;
-        public DateTime Birthday
+        private string _birthday;
+        public string Birthday
         {
             get => _birthday;
             set

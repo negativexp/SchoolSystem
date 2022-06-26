@@ -56,6 +56,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
 
         public void ResetData()
         {
+            _teacherEntity.Id = string.Empty;
             _teacherEntity.FirstName = String.Empty;
             _teacherEntity.LastName = String.Empty;
             _teacherEntity.Birthday = null;

@@ -12,6 +12,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
         private Models.ClassEntity _classEntity;
         private DataAccess.SchoolRepository _schoolRepository;
 
+
         ICommand _showCreateWindowCommand;
         ICommand _createClassCommand;
         ICommand _refreshCommand;
@@ -28,6 +29,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
             _createClassCommand = new RelayCommand(param => CreateClass(), null);
             _refreshCommand = new RelayCommand(param => GetAll(), null);
 
+            CreateGradeList();
             GetAllTeachers();
             GetAll();
         }
@@ -83,6 +85,23 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
             _schoolRepository.GetAllTeachers().ForEach(data => Teachers.Add(data.FullName));
         }
 
+        public void CreateGradeList()
+        {
+            Grades = new List<string>();
+            Grades.Add("1st");
+            Grades.Add("2nd");
+            Grades.Add("3rd");
+            Grades.Add("4th");
+            Grades.Add("5th");
+            Grades.Add("6th");
+            Grades.Add("7th");
+            Grades.Add("8th");
+            Grades.Add("9th");
+            Grades.Add("10th");
+            Grades.Add("11th");
+            Grades.Add("12th");
+        }
+
         private List<string> _teachers;
         public List<string> Teachers
         {
@@ -90,6 +109,16 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
             set
             {
                 _teachers = value;
+            }
+        }
+
+        private List<string> _grades;
+        public List<string> Grades
+        {
+            get => _grades;
+            set
+            {
+                _grades = value;
             }
         }
 
