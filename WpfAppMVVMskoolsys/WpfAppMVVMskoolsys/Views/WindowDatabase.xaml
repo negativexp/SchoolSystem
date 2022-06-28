@@ -18,7 +18,7 @@
                 <TextBlock Style="{StaticResource TextBlockTitle}" Text="Database settings" DockPanel.Dock="Left"/>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"
                             HorizontalAlignment="Right">
-                    <Button Style="{StaticResource ButtonTemplate}" Content="Close"/>
+                    <Button Style="{StaticResource ButtonTemplate}" Content="Close" Command="{Binding testing}"/>
                     <Button Style="{StaticResource ButtonTemplate}" Content="Save" Command="{Binding SaveCommand}"/>
                 </StackPanel>
             </DockPanel>

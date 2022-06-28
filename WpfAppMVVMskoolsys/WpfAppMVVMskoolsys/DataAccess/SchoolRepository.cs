@@ -4,21 +4,34 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace WpfAppMVVMskoolsys.DataAccess
 {
     class SchoolRepository
     {
-        string connectionString = "mongodb://localhost:27017";
-        string databaseName = "schoolsys_db";
-        string CollectionClasses = "classes";
-        string CollectionTeachers = "teachers";
-        string CollectionStudents = "students";
+        string[] data;
+        string connectionString;
+        string databaseName;
+        string CollectionClasses;
+        string CollectionTeachers;
+        string CollectionStudents;
+
+        private DataAccess.DatabaseSettings databaseSettings = new DataAccess.DatabaseSettings();
 
         MongoHelper database;
 
         public SchoolRepository()
         {
+            if(File.Exists("db-settings.txt"))
+            {
+                string[] data = databaseSettings.LoadSettings();
+                connectionString = data[0];
+                databaseName = data[1];
+                CollectionClasses = data[2];
+                CollectionTeachers = data[3];
+                CollectionStudents = data[4];
+            }
             database = new MongoHelper(connectionString, databaseName);
         }
 

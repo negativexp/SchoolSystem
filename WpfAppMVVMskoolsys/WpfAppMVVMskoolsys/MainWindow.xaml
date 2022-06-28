@@ -21,7 +21,7 @@
                                             CommandParameter="{Binding ElementName=FramePage}"/>
                 <MenuItem Header="Teachers" Command="{Binding TeachersPage}"
                                             CommandParameter="{Binding ElementName=FramePage}"/>
-                <MenuItem Header="Database"/>
+                <MenuItem Header="Database" Command="{Binding DatabaseSettings}"/>
                 <MenuItem Header="Main Menu"/>
                 <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
             </MenuItem>

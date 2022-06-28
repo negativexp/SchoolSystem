@@ -21,8 +21,15 @@ namespace WpfAppMVVMskoolsys.ViewModels
             _classesPage = new RelayCommand(param => ChangeToClassesPage(param as System.Windows.Controls.Frame), null);
             _teachersPage = new RelayCommand(param => ChangeToTeachersPage(param as System.Windows.Controls.Frame), null);
             _studentsPage = new RelayCommand(param => ChangeToStudentsPage(param as System.Windows.Controls.Frame), null);
+            _databaseWindow = new RelayCommand(param => ShowDatabaseSettings(), null);
 
             _exitCommand = new RelayCommand(param => CloseApplication(), null);
+        }
+
+        public void ShowDatabaseSettings()
+        {
+            Views.WindowDatabase windowDatabase = new Views.WindowDatabase();
+            windowDatabase.Show();
         }
 
         public void ChangeToClassesPage(System.Windows.Controls.Frame frame)
@@ -58,6 +65,11 @@ namespace WpfAppMVVMskoolsys.ViewModels
         public ICommand StudentsPage
         {
             get => _studentsPage;
+        }
+
+        public ICommand DatabaseSettings
+        {
+            get => _databaseWindow;
         }
 
         public ICommand ExitCommand
