@@ -12,30 +12,31 @@ namespace WpfAppMVVMskoolsys.ViewModels
     {
         ICommand _classesPage;
         ICommand _teachersPage;
+        ICommand _studentsPage;
         ICommand _exitCommand;
 
         public MainWindowVM()
         {
-            _classesPage = new RelayCommand(param => ChangeToClassesPage(param), null);
-            _teachersPage = new RelayCommand(param => ChangeToTeachersPage(param), null);
+            _classesPage = new RelayCommand(param => ChangeToClassesPage(param as System.Windows.Controls.Frame), null);
+            _teachersPage = new RelayCommand(param => ChangeToTeachersPage(param as System.Windows.Controls.Frame), null);
+            _studentsPage = new RelayCommand(param => ChangeToStudentsPage(param as System.Windows.Controls.Frame), null);
 
             _exitCommand = new RelayCommand(param => CloseApplication(), null);
         }
 
-        public void ChangeToClassesPage(object obj)
+        public void ChangeToClassesPage(System.Windows.Controls.Frame frame)
         {
-            if(obj is System.Windows.Controls.Frame frame)
-            {
-                frame.Content = new Views.Classes.PageClasses();
-            }
+            frame.Content = new Views.Classes.PageClasses();
         }
 
-        public void ChangeToTeachersPage(object obj)
+        public void ChangeToTeachersPage(System.Windows.Controls.Frame frame)
         {
-            if (obj is System.Windows.Controls.Frame frame)
-            {
-                frame.Content = new Views.Teachers.PageTeachers();
-            }
+            frame.Content = new Views.Teachers.PageTeachers();
+        }
+
+        public void ChangeToStudentsPage(System.Windows.Controls.Frame frame)
+        {
+            frame.Content = new Views.Students.PageStudents();
         }
 
         public void CloseApplication()
@@ -51,6 +52,11 @@ namespace WpfAppMVVMskoolsys.ViewModels
         public ICommand TeachersPage
         {
             get => _teachersPage;
+        }
+
+        public ICommand StudentsPage
+        {
+            get => _studentsPage;
         }
 
         public ICommand ExitCommand

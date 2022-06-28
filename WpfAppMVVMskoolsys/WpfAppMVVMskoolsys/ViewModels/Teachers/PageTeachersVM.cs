@@ -41,6 +41,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
             _teacherEntity.Birthday = _teacherRecord.Birthday;
             _teacherEntity.Degree = _teacherRecord.Degree;
             _teacherEntity.Salary = _teacherRecord.Salary;
+            _teacherEntity.PhoneNumber = _teacherRecord.PhoneNumber;
             try
             {
                 _schoolRepository.CreateTeacher(_teacherEntity);
@@ -56,12 +57,13 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
 
         public void ResetData()
         {
-            _teacherEntity.Id = string.Empty;
+            _teacherEntity.Id = String.Empty;
             _teacherEntity.FirstName = String.Empty;
             _teacherEntity.LastName = String.Empty;
             _teacherEntity.Birthday = null;
             _teacherEntity.Degree = String.Empty;
             _teacherEntity.Salary = 0;
+            _teacherEntity.PhoneNumber = String.Empty;
         }
 
         public void GetAll()
@@ -74,7 +76,8 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
                 LastName = data.LastName,
                 Birthday = data.Birthday,
                 Degree = data.Degree,
-                Salary = data.Salary
+                Salary = data.Salary,
+                PhoneNumber = data.PhoneNumber
             }));
         }
 

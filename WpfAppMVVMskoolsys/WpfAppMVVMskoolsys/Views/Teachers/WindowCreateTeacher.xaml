@@ -32,6 +32,8 @@
                 <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _teacherRecord.LastName, Mode=TwoWay}"/>
                 <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Birthday (dd/MM/yyyy):"/>
                 <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _teacherRecord.Birthday, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Phone Number:"/>
+                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _teacherRecord.PhoneNumber, Mode=TwoWay}"/>
                 <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Degree:"/>
                 <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _teacherRecord.Degree, Mode=TwoWay}"/>
                 <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Salary:"/>

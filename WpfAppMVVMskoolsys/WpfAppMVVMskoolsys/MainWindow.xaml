@@ -17,7 +17,8 @@
             <MenuItem Header="System">
                 <MenuItem Header="Classes" Command="{Binding ClassesPage}"
                                            CommandParameter="{Binding ElementName=FramePage}"/>
-                <MenuItem Header="Students"/>
+                <MenuItem Header="Students" Command="{Binding StudentsPage}"
+                                            CommandParameter="{Binding ElementName=FramePage}"/>
                 <MenuItem Header="Teachers" Command="{Binding TeachersPage}"
                                             CommandParameter="{Binding ElementName=FramePage}"/>
                 <MenuItem Header="Database"/>

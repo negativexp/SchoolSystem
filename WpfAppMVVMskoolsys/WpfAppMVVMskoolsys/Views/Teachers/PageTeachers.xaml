@@ -37,6 +37,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
                     <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" Width="*"/>
+                    <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" Width="*"/>
                     <DataGridTextColumn Header="Birthday" Binding="{Binding Birthday, StringFormat=dd/MM/yyyy}" Width="*"/>
                     <DataGridTextColumn Header="Degree" Binding="{Binding Degree}" Width="*"/>
                     <DataGridTextColumn Header="Salary" Binding="{Binding Salary, StringFormat=0 CZK}" Width="*"/>

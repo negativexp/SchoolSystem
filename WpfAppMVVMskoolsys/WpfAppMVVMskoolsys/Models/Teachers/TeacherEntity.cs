@@ -13,6 +13,7 @@ namespace WpfAppMVVMskoolsys.Models.Teachers
         public string LastName { get; set; }
         public string FullName { get { return $"{FirstName} {LastName}"; } }
         public string Birthday { get; set; }
+        public string PhoneNumber { get; set; }
         public string Degree { get; set; }
         public int? Salary { get; set; }
     }

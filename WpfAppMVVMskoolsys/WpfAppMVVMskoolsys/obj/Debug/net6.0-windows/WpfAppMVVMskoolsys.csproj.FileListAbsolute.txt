@@ -73,3 +73,7 @@ C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskools
 C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\Views\Teachers\PageTeachers.baml
 C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\Views\Teachers\WindowCreateTeacher.g.cs
 C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\Views\Teachers\WindowCreateTeacher.baml
+C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\Views\Students\PageStudents.g.cs
+C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\Views\Students\PageStudents.baml
+C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\Views\Students\WindowCreateStudent.g.cs
+C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\obj\Debug\net6.0-windows\Views\Students\WindowCreateStudent.baml

@@ -1,0 +1,47 @@
+﻿<Page x:Class="WpfAppMVVMskoolsys.Views.Students.PageStudents"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfAppMVVMskoolsys.Views.Students"
+      xmlns:vm="clr-namespace:WpfAppMVVMskoolsys.ViewModels.Students"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageStudents"
+      Loaded="Page_Loaded">
+
+    <Page.DataContext>
+        <vm:PageStudentsVM/>
+    </Page.DataContext>
+
+        <DockPanel>
+        <!--title-->
+        <Border Style="{StaticResource BorderTitle}" DockPanel.Dock="Top">
+            <DockPanel>
+                <TextBlock Style="{StaticResource TextBlockTitle}" Text="Students" DockPanel.Dock="Left"/>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"
+                            HorizontalAlignment="Right">
+                    <Button Style="{StaticResource ButtonTemplate}" Content="Refresh"/>
+                    <Button Style="{StaticResource ButtonTemplate}" Content="Add" Command="{Binding ShowCreateWindowCommand}"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+        <!--content-->
+        <Border Style="{StaticResource BorderContent}">
+            <DataGrid BorderBrush="Transparent" BorderThickness="0"
+                      CanUserAddRows="False"
+                      ItemsSource="{Binding _studentRecord.StudentRecords}"
+                      IsReadOnly="True"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
+                    <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" Width="*"/>
+                    <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" Width="*"/>
+                    <DataGridTextColumn Header="Birthday" Binding="{Binding Birthday}" Width="*"/>
+                    <DataGridTextColumn Header="Mothers Name" Binding="{Binding MothersName}" Width="*"/>
+                    <DataGridTextColumn Header="Fathers Name" Binding="{Binding FathersName}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </DockPanel>
+</Page>

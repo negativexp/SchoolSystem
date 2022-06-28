@@ -48,6 +48,16 @@ namespace WpfAppMVVMskoolsys.Models.Teachers
                 OnPropertyChanged();
             }
         }
+        private string _phoneNumber;
+        public string PhoneNumber
+        {
+            get => _phoneNumber;
+            set
+            {
+                _phoneNumber = value;
+                OnPropertyChanged();
+            }
+        }
         private string _degree;
         public string Degree
         {

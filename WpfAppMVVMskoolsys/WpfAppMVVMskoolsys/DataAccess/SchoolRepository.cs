@@ -13,6 +13,7 @@ namespace WpfAppMVVMskoolsys.DataAccess
         string databaseName = "schoolsys_db";
         string CollectionClasses = "classes";
         string CollectionTeachers = "teachers";
+        string CollectionStudents = "students";
 
         MongoHelper database;
 
@@ -41,6 +42,16 @@ namespace WpfAppMVVMskoolsys.DataAccess
         public List<Models.Teachers.TeacherEntity> GetAllTeachers()
         {
             return database.LoadAllDocuments<Models.Teachers.TeacherEntity>(CollectionTeachers);
+        }
+        //students
+        public void CreateStudent(Models.Students.StudentEntity _student)
+        {
+            database.InsertDocument<Models.Students.StudentEntity>(CollectionStudents, _student);
+        }
+
+        public List<Models.Students.StudentEntity> GetAllStudents()
+        {
+            return database.LoadAllDocuments<Models.Students.StudentEntity>(CollectionStudents);
         }
     }
 }
