@@ -10,12 +10,11 @@ namespace WpfAppMVVMskoolsys.DataAccess
 {
     class SchoolRepository
     {
-        string[] data;
-        string connectionString;
-        string databaseName;
-        string CollectionClasses;
-        string CollectionTeachers;
-        string CollectionStudents;
+        string connectionString = "";
+        string databaseName = "";
+        string CollectionClasses = "";
+        string CollectionTeachers = "";
+        string CollectionStudents = "";
 
         private DataAccess.DatabaseSettings databaseSettings = new DataAccess.DatabaseSettings();
 
