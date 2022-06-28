@@ -4,23 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppMVVMskoolsys.Views"
+        xmlns:vm="clr-namespace:WpfAppMVVMskoolsys.ViewModels.Database"
         mc:Ignorable="d"
-        Title="WindowDatabase" Height="450" Width="800">
-    <DockPanel>
+        Title="WindowDatabase" Height="700" Width="650">
+
+    <Window.DataContext>
+        <vm:WindowDatabaseVM/>
+    </Window.DataContext>
+
+        <DockPanel>
         <Border Style="{StaticResource BorderTitle}" DockPanel.Dock="Top">
             <DockPanel>
-                <TextBlock Style="{StaticResource TextBlockTitle}" Text="Database settings - MongoDB" DockPanel.Dock="Left"/>
+                <TextBlock Style="{StaticResource TextBlockTitle}" Text="Database settings" DockPanel.Dock="Left"/>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"
                             HorizontalAlignment="Right">
                     <Button Style="{StaticResource ButtonTemplate}" Content="Close"/>
-                    <Button Style="{StaticResource ButtonTemplate}" Content="Save"/>
+                    <Button Style="{StaticResource ButtonTemplate}" Content="Save" Command="{Binding SaveCommand}"/>
                 </StackPanel>
             </DockPanel>
         </Border>
 
         <Border Style="{StaticResource BorderContent}">
             <StackPanel>
-                
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Connection String:"/>
+                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding DatabaseSettings.ConnectionString, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Database Name:"/>
+                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding DatabaseSettings.DatabaseName, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Classes Collection Name:"/>
+                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding DatabaseSettings.CollectionClasses, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Teachers Collection Name:"/>
+                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding DatabaseSettings.CollectionTeachers, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Students Collection Name:"/>
+                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding DatabaseSettings.CollectionStudents, Mode=TwoWay}"/>
             </StackPanel>
         </Border>
     </DockPanel>

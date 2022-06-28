@@ -13,6 +13,7 @@ namespace WpfAppMVVMskoolsys.ViewModels
         ICommand _classesPage;
         ICommand _teachersPage;
         ICommand _studentsPage;
+        ICommand _databaseWindow;
         ICommand _exitCommand;
 
         public MainWindowVM()
