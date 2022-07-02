@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\matta\Documents\GitHub\SchoolSystem\WpfAppMVVMskoolsys\WpfAppMVVMskoolsys\App.xaml
 8-1814299934
 
-29-1952659896
+30-396270132
 200-1658170020
 MainWindow.xaml;Views\Classes\PageClasses.xaml;Views\Classes\WindowCreateClass.xaml;Views\Students\PageStudents.xaml;Views\Students\WindowCreateStudent.xaml;Views\Teachers\PageTeachers.xaml;Views\Teachers\WindowCreateTeacher.xaml;Views\WindowDatabase.xaml;
 
-False
+True
 

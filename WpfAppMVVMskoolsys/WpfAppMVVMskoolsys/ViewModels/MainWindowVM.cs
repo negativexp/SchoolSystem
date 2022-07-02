@@ -10,6 +10,7 @@ namespace WpfAppMVVMskoolsys.ViewModels
 {
     class MainWindowVM
     {
+        DataAccess.TestingService testingService = new DataAccess.TestingService();
         ICommand _classesPage;
         ICommand _teachersPage;
         ICommand _studentsPage;
@@ -24,6 +25,9 @@ namespace WpfAppMVVMskoolsys.ViewModels
             _databaseWindow = new RelayCommand(param => ShowDatabaseSettings(), null);
 
             _exitCommand = new RelayCommand(param => CloseApplication(), null);
+
+            //testingService.GenerateStudents();
+            //testingService.GenerateTeachers();
         }
 
         public void ShowDatabaseSettings()

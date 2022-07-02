@@ -23,14 +23,14 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
             _classRecord = new Models.ClassRecord();
             _classEntity = new Models.ClassEntity();
             _teacherRecord = new Models.Teachers.TeacherRecord();
-            Teachers = new List<string>();
 
             _showCreateWindowCommand = new RelayCommand(param => ShowCreateWindow(), null);
-            _createClassCommand = new RelayCommand(param => CreateClass(), null);
+            _createClassCommand = new RelayCommand(param => CreateClass(param), null);
             _refreshCommand = new RelayCommand(param => GetAll(), null);
 
             CreateGradeList();
             GetAllTeachers();
+            GetAllStudents();
             GetAll();
         }
 
@@ -41,21 +41,38 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
             GetAll();
         }
 
-        public void CreateClass()
+        public void CreateClass(object obj)
         {
+            System.Windows.Controls.ListBox listbox = obj as System.Windows.Controls.ListBox;
+
             _classEntity.ClassName = _classRecord.ClassName;
             _classEntity.Grade = _classRecord.Grade;
             _classEntity.RootTeacher = _classRecord.RootTeacher;
-            try
+            _classEntity.Students = new Dictionary<string, string>();
+
+            foreach (Models.Students.StudentEntity item in listbox.SelectedItems)
             {
-                _schoolRepository.CreateClass(_classEntity);
+                _classEntity.Students.Add(item.Id, item.FullName);
             }
-            catch (Exception ex) { MessageBox.Show($"Something went wrong.\n{ex.ToString()}", "error"); }
-            finally
+
+            if (string.IsNullOrEmpty(_classRecord.ClassName) || string.IsNullOrEmpty(_classRecord.Grade) ||
+               string.IsNullOrEmpty(_classRecord.RootTeacher) || _classEntity.Students.Count == 0)
             {
-                MessageBox.Show($"Class '{_classEntity.ClassName}' has been created!", "Success");
-                GetAll();
-                ResetData();
+                MessageBox.Show("Please fill all the information about the class!", "Error");
+            }
+            else
+            {
+                try
+                {
+                    _schoolRepository.CreateClass(_classEntity);
+                }
+                catch (Exception ex) { MessageBox.Show($"Something went wrong.\n{ex.ToString()}", "error"); }
+                finally
+                {
+                    MessageBox.Show($"Class '{_classEntity.ClassName}' has been created!", "Success");
+                    GetAll();
+                    ResetData();
+                }
             }
         }
 
@@ -65,6 +82,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
             _classEntity.ClassName = String.Empty;
             _classEntity.Grade = String.Empty;
             _classEntity.RootTeacher = String.Empty;
+            _classEntity.Students.Clear();
         }
 
         public void GetAll()
@@ -81,8 +99,15 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
 
         public void GetAllTeachers()
         {
-            _teacherRecord.TeacherRecords = new List<Models.Teachers.TeacherEntity>();
+            //_teacherRecord.TeacherRecords = new List<Models.Teachers.TeacherEntity>();
+            Teachers = new List<string>();
             _schoolRepository.GetAllTeachers().ForEach(data => Teachers.Add(data.FullName));
+        }
+
+        public void GetAllStudents()
+        {
+            Students = new List<Models.Students.StudentEntity>();
+            _schoolRepository.GetAllStudents().ForEach(data => Students.Add(data));
         }
 
         public void CreateGradeList()
@@ -100,6 +125,16 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
             Grades.Add("10th");
             Grades.Add("11th");
             Grades.Add("12th");
+        }
+
+        private List<Models.Students.StudentEntity> _students;
+        public List<Models.Students.StudentEntity> Students
+        {
+            get => _students;
+            set
+            {
+                _students = value;
+            }
         }
 
         private List<string> _teachers;

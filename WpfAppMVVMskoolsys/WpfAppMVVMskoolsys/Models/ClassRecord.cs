@@ -57,6 +57,16 @@ namespace WpfAppMVVMskoolsys.Models
                 OnPropertyChanged();
             }
         }
+        private Dictionary<string, string> _students;
+        public Dictionary<string, string> Students
+        {
+            get => _students;
+            set
+            {
+                _students = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void ClassRecord_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {

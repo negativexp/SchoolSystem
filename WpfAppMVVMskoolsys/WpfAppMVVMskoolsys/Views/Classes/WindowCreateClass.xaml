@@ -19,20 +19,33 @@
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"
                             HorizontalAlignment="Right">
                     <Button Style="{StaticResource ButtonTemplate}" Content="Close"/>
-                    <Button Style="{StaticResource ButtonTemplate}" Content="Create" Command="{Binding CreateClassCommand}"/>
+                    <Button Style="{StaticResource ButtonTemplate}" Content="Create" Command="{Binding CreateClassCommand}"
+                                                                                     CommandParameter="{Binding ElementName=ListBoxStudents}"/>
                 </StackPanel>
             </DockPanel>
         </Border>
 
         <Border Style="{StaticResource BorderContent}">
-            <StackPanel>
-                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Name of Class:"/>
-                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _classRecord.ClassName, Mode=TwoWay}"/>
-                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Grade:"/>
-                <ComboBox Style="{StaticResource ComboBoxTemplate}" ItemsSource="{Binding Grades}" Text="{Binding _classRecord.Grade, Mode=TwoWay}"/>
-                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Root Teacher:"/>
-                <ComboBox Style="{StaticResource ComboBoxTemplate}" ItemsSource="{Binding Teachers}" Text="{Binding _classRecord.RootTeacher, Mode=TwoWay}"/>
-            </StackPanel>
+            <DockPanel>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Name of Class:" DockPanel.Dock="Top"/>
+                <TextBox Style="{StaticResource TextBoxTemplate}" Text="{Binding _classRecord.ClassName, Mode=TwoWay}" DockPanel.Dock="Top"/>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Grade:" DockPanel.Dock="Top"/>
+                <ComboBox Style="{StaticResource ComboBoxTemplate}" ItemsSource="{Binding Grades}" Text="{Binding _classRecord.Grade, Mode=TwoWay}" DockPanel.Dock="Top"/>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Root Teacher:" DockPanel.Dock="Top"/>
+                <ComboBox Style="{StaticResource ComboBoxTemplate}" ItemsSource="{Binding Teachers}" Text="{Binding _classRecord.RootTeacher}" DockPanel.Dock="Top"/>
+                <TextBlock Style="{StaticResource TextBlockHeader1}" Text="Select Students:" DockPanel.Dock="Top"/>
+                <ListBox x:Name="ListBoxStudents" ItemsSource="{Binding Students}" SelectionMode="Multiple" Margin="10 0 10 10">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding FullName}"/>
+                                <TextBlock Text="{Binding Birthday}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                    
+            </DockPanel>
         </Border>
     </DockPanel>
 </Window>

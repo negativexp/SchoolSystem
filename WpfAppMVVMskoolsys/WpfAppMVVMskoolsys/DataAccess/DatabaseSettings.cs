@@ -23,14 +23,13 @@ namespace WpfAppMVVMskoolsys.DataAccess
 
         public string[] LoadSettings()
         {
-            string[] returnData = new string[5];
             string[] data = File.ReadAllLines("db-settings.txt");
-            returnData[0] = data[0].Replace("connectionString=", "");
-            returnData[1] = data[1].Replace("databaseName=", "");
-            returnData[2] = data[2].Replace("collectionClasses=", "");
-            returnData[3] = data[3].Replace("collectionTeachers=", "");
-            returnData[4] = data[4].Replace("collectionStudents=", "");
-            return returnData;
+            data[0] = data[0].Replace("connectionString=", "");
+            data[1] = data[1].Replace("databaseName=", "");
+            data[2] = data[2].Replace("collectionClasses=", "");
+            data[3] = data[3].Replace("collectionTeachers=", "");
+            data[4] = data[4].Replace("collectionStudents=", "");
+            return data;
         }
     }
 }
