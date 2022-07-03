@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using MongoDB.Bson;
 
 namespace WpfAppMVVMskoolsys.DataAccess
 {
@@ -45,6 +46,12 @@ namespace WpfAppMVVMskoolsys.DataAccess
             return database.LoadAllDocuments<Models.ClassEntity>(CollectionClasses);
         }
 
+        public void DeleteClass(Models.ClassEntity _class)
+        {
+            ObjectId id = ObjectId.Parse(_class.Id);
+            database.DeleteDocument<Models.ClassEntity>(CollectionClasses, id);
+        }
+
         //teachers
         public void CreateTeacher(Models.Teachers.TeacherEntity _teacher)
         {
@@ -55,6 +62,13 @@ namespace WpfAppMVVMskoolsys.DataAccess
         {
             return database.LoadAllDocuments<Models.Teachers.TeacherEntity>(CollectionTeachers);
         }
+
+        public void DeleteTeacher(Models.Teachers.TeacherEntity _teacher)
+        {
+            ObjectId id = ObjectId.Parse(_teacher.Id);
+            database.DeleteDocument<Models.Teachers.TeacherEntity>(CollectionTeachers, id);
+        }
+
         //students
         public void CreateStudent(Models.Students.StudentEntity _student)
         {
@@ -64,6 +78,12 @@ namespace WpfAppMVVMskoolsys.DataAccess
         public List<Models.Students.StudentEntity> GetAllStudents()
         {
             return database.LoadAllDocuments<Models.Students.StudentEntity>(CollectionStudents);
+        }
+
+        public void DeleteStudent(Models.Students.StudentEntity _student)
+        {
+            ObjectId id = ObjectId.Parse(_student.Id);
+            database.DeleteDocument<Models.Students.StudentEntity>(CollectionStudents, id);
         }
     }
 }

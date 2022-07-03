@@ -13,6 +13,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Students
 
         ICommand _showCreateWindowCommand;
         ICommand _createStudentCommand;
+        ICommand _deleteStudentCommand;
 
         public PageStudentsVM()
         {
@@ -22,6 +23,8 @@ namespace WpfAppMVVMskoolsys.ViewModels.Students
 
             _showCreateWindowCommand = new RelayCommand(param => ShowCreateWindow(), null);
             _createStudentCommand = new RelayCommand(param => CreateStudent(), null);
+            _deleteStudentCommand = new RelayCommand(param => DeleteStudent(param), null);
+
             GetAll();
         }
 
@@ -40,17 +43,50 @@ namespace WpfAppMVVMskoolsys.ViewModels.Students
             _studentEntity.PhoneNumber = _studentRecord.PhoneNumber;
             _studentEntity.MothersName = _studentRecord.MothersName;
             _studentEntity.FathersName = _studentRecord.FathersName;
-            try
+
+            if (string.IsNullOrEmpty(_studentRecord.FirstName) || string.IsNullOrEmpty(_studentRecord.LastName) ||
+               string.IsNullOrEmpty(_studentRecord.Birthday))
             {
-                _schoolRepository.CreateStudent(_studentEntity);
+                MessageBox.Show("Please fill all the information about the student!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (Exception ex) { MessageBox.Show($"Something went wrong.\n{ex.ToString()}", "error"); }
-            finally
+            else
             {
-                MessageBox.Show($"Student '{_studentEntity.FullName}' has been created!", "Success");
-                GetAll();
-                ResetData();
+                try
+                {
+                    _schoolRepository.CreateStudent(_studentEntity);
+                }
+                catch (Exception ex) { MessageBox.Show($"Something went wrong.\n{ex.ToString()}", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
+                finally
+                {
+                    MessageBox.Show($"Student '{_studentEntity.FullName}' has been created!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    GetAll();
+                    ResetData();
+                }
             }
+        }
+
+        public void DeleteStudent(object obj)
+        {
+            System.Windows.Controls.DataGrid data = obj as System.Windows.Controls.DataGrid;
+            string names = "";
+
+            if (data.SelectedItems.Count > 0)
+            {
+                foreach (Models.Students.StudentEntity _student in data.SelectedItems)
+                {
+                    names += $"\"{_student.FullName}\", ";
+                }
+                names = names.Remove(names.Length - 2);
+                if (MessageBox.Show($"{names} Will be deleted. Are you sure?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    foreach (Models.Students.StudentEntity _student in data.SelectedItems)
+                    {
+                        _schoolRepository.DeleteStudent(_student);
+                    }
+                    MessageBox.Show("Done!", "Sucess", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            GetAll();
         }
 
         public void ResetData()
@@ -82,6 +118,11 @@ namespace WpfAppMVVMskoolsys.ViewModels.Students
         public ICommand ShowCreateWindowCommand
         {
             get => _showCreateWindowCommand;
+        } 
+
+        public ICommand DeleteStudentCommand
+        {
+            get => _deleteStudentCommand;
         }
 
         public ICommand CreateStudentCommand

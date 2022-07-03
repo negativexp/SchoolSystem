@@ -22,6 +22,8 @@
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Right"
                             HorizontalAlignment="Right">
                     <Button Style="{StaticResource ButtonTemplate}" Content="Refresh" Command="{Binding RefreshCommand}"/>
+                    <Button Style="{StaticResource ButtonTemplate}" Content="Delete" Command="{Binding DeleteClassCommand}"
+                                                                                     CommandParameter="{Binding ElementName=DataGridClasses}"/>
                     <Button Style="{StaticResource ButtonTemplate}" Content="Add" Command="{Binding ShowCreateWindowCommand}"/>
                 </StackPanel>
             </DockPanel>
@@ -32,12 +34,14 @@
                       ItemsSource="{Binding _classRecord.ClassRecords}"
                       CanUserAddRows="False"
                       IsReadOnly="True"
-                      AutoGenerateColumns="False">
+                      AutoGenerateColumns="False"
+                      x:Name="DataGridClasses">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
                     <DataGridTextColumn Header="Class Name" Binding="{Binding ClassName}" Width="*"/>
                     <DataGridTextColumn Header="Grade" Binding="{Binding Grade}" Width="*"/>
                     <DataGridTextColumn Header="Root Teacher" Binding="{Binding RootTeacher}" Width="*"/>
+                    <DataGridTextColumn Header="Amount of Students" Binding="{Binding Students.Count}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

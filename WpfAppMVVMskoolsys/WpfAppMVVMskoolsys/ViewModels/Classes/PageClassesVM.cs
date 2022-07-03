@@ -16,6 +16,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
         ICommand _showCreateWindowCommand;
         ICommand _createClassCommand;
         ICommand _refreshCommand;
+        ICommand _deleteClassCommand;
 
         public PageClassesVM()
         {
@@ -26,6 +27,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
 
             _showCreateWindowCommand = new RelayCommand(param => ShowCreateWindow(), null);
             _createClassCommand = new RelayCommand(param => CreateClass(param), null);
+            _deleteClassCommand = new RelayCommand(param => DeleteClass(param), null);
             _refreshCommand = new RelayCommand(param => GetAll(), null);
 
             CreateGradeList();
@@ -58,7 +60,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
             if (string.IsNullOrEmpty(_classRecord.ClassName) || string.IsNullOrEmpty(_classRecord.Grade) ||
                string.IsNullOrEmpty(_classRecord.RootTeacher) || _classEntity.Students.Count == 0)
             {
-                MessageBox.Show("Please fill all the information about the class!", "Error");
+                MessageBox.Show("Please fill all the information about the class!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -66,14 +68,38 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
                 {
                     _schoolRepository.CreateClass(_classEntity);
                 }
-                catch (Exception ex) { MessageBox.Show($"Something went wrong.\n{ex.ToString()}", "error"); }
+                catch (Exception ex) { MessageBox.Show($"Something went wrong.\n{ex.ToString()}", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
                 finally
                 {
-                    MessageBox.Show($"Class '{_classEntity.ClassName}' has been created!", "Success");
+                    MessageBox.Show($"Class '{_classEntity.ClassName}' has been created!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     GetAll();
                     ResetData();
                 }
             }
+        }
+
+        public void DeleteClass(object obj)
+        {
+            System.Windows.Controls.DataGrid data = obj as System.Windows.Controls.DataGrid;
+            string names = "";
+
+            if (data.SelectedItems.Count > 0)
+            {
+                foreach (Models.ClassEntity _class in data.SelectedItems)
+                {
+                    names += $"\"{_class.ClassName}\", ";
+                }
+                names = names.Remove(names.Length - 2);
+                if (MessageBox.Show($"{names} Will be deleted. Are you sure?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    foreach (Models.ClassEntity _class in data.SelectedItems)
+                    {
+                        _schoolRepository.DeleteClass(_class);
+                    }
+                    MessageBox.Show("Done!", "Sucess", MessageBoxButton.OK, MessageBoxImage.Information);
+                } 
+            }
+            GetAll();
         }
 
         public void ResetData()
@@ -93,7 +119,8 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
                 Id = data.Id,
                 ClassName = data.ClassName,
                 Grade = data.Grade,
-                RootTeacher = data.RootTeacher
+                RootTeacher = data.RootTeacher,
+                Students = data.Students,
             }));
         }
 
@@ -165,6 +192,11 @@ namespace WpfAppMVVMskoolsys.ViewModels.Classes
         public ICommand CreateClassCommand
         {
             get => _createClassCommand;
+        }
+
+        public ICommand DeleteClassCommand
+        {
+            get => _deleteClassCommand;
         }
 
         public ICommand RefreshCommand

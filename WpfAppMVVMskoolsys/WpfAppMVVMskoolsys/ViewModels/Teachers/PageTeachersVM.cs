@@ -13,6 +13,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
 
         ICommand _showCreateWindowCommand;
         ICommand _createTeacherCommand;
+        ICommand _deleteStudentCommand;
         ICommand _refreshCommand;
 
         public PageTeachersVM()
@@ -23,6 +24,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
 
             _showCreateWindowCommand = new RelayCommand(param => ShowCreateWindow(), null);
             _createTeacherCommand = new RelayCommand(param => CreateTeacher(), null);
+            _deleteStudentCommand = new RelayCommand(param => DeleteTeacher(param), null);
             _refreshCommand = new RelayCommand(param => GetAll(), null);
             GetAll();
         }
@@ -42,17 +44,50 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
             _teacherEntity.Degree = _teacherRecord.Degree;
             _teacherEntity.Salary = _teacherRecord.Salary;
             _teacherEntity.PhoneNumber = _teacherRecord.PhoneNumber;
-            try
+
+            if(string.IsNullOrEmpty(_teacherRecord.FirstName) || string.IsNullOrEmpty(_teacherRecord.LastName) ||
+               string.IsNullOrEmpty(_teacherRecord.Birthday))
             {
-                _schoolRepository.CreateTeacher(_teacherEntity);
+                MessageBox.Show("Please fill all the information about the teacher!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (Exception ex) { MessageBox.Show($"Something went wrong.\n{ex.ToString()}", "error"); }
-            finally
+            else
             {
-                MessageBox.Show($"Techer '{_teacherEntity.FullName}' has been created!", "Success");
-                GetAll();
-                ResetData();
+                try
+                {
+                    _schoolRepository.CreateTeacher(_teacherEntity);
+                }
+                catch (Exception ex) { MessageBox.Show($"Something went wrong.\n{ex.ToString()}", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
+                finally
+                {
+                    MessageBox.Show($"Techer '{_teacherEntity.FullName}' has been created!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    GetAll();
+                    ResetData();
+                }
             }
+        }
+
+        public void DeleteTeacher(object obj)
+        {
+            System.Windows.Controls.DataGrid data = obj as System.Windows.Controls.DataGrid;
+            string names = "";
+
+            if (data.SelectedItems.Count > 0)
+            {
+                foreach (Models.Teachers.TeacherEntity _teacher in data.SelectedItems)
+                {
+                    names += $"\"{_teacher.FullName}\", ";
+                }
+                names = names.Remove(names.Length - 2);
+                if (MessageBox.Show($"{names} Will be deleted. Are you sure?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    foreach (Models.Teachers.TeacherEntity _teacher in data.SelectedItems)
+                    {
+                        _schoolRepository.DeleteTeacher(_teacher);
+                    }
+                    MessageBox.Show("Done!", "Sucess", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            GetAll();
         }
 
         public void ResetData()
@@ -89,6 +124,11 @@ namespace WpfAppMVVMskoolsys.ViewModels.Teachers
         public ICommand CreateTeacherCommand
         {
             get => _createTeacherCommand;
+        }
+
+        public ICommand DeleteTeacherCommand
+        {
+            get => _deleteStudentCommand;
         }
 
         public ICommand RefreshCommand
