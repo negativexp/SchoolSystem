@@ -29,10 +29,6 @@ A student contains...
  - Mothers name
  - Fathers name
 # Known bugs
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-| Bug name | description |
+| Bug name      | description |
+| ------------- |-------------|
 | UI list bug | If there are only two objects in one of the collections, the second one only shows when the page is loaded or third object is created and disappears when refreshed or new third object is created. |
