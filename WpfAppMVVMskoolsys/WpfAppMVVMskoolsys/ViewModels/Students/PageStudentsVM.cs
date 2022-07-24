@@ -45,7 +45,7 @@ namespace WpfAppMVVMskoolsys.ViewModels.Students
             _studentEntity.FathersName = _studentRecord.FathersName;
 
             if (string.IsNullOrEmpty(_studentRecord.FirstName) || string.IsNullOrEmpty(_studentRecord.LastName) ||
-               string.IsNullOrEmpty(_studentRecord.Birthday))
+                string.IsNullOrEmpty(_studentRecord.Birthday))
             {
                 MessageBox.Show("Please fill all the information about the student!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
